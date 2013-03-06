@@ -15,27 +15,18 @@ import com.partyrock.element.ElementType;
 import com.partyrock.element.led.LEDPanelController;
 
 /**
- * This is a basic animation that will swap the places of two random colors 
+ * This is a basic animation that will create a random shade of pink or red flower grow 
  * 
  * @author Emily Tran
  * 
  */
 public class ET_FlowerGrow extends ElementAnimation {
 
-    //Background color and two colors to swap 
-    private Color red = sysColor(255, 0, 0);
-    private Color orange = sysColor(255, 165, 0);
-    private Color yellow = sysColor(255, 255, 0);
-    private Color green = sysColor(0, 128, 0);
-    private Color blue = sysColor(0, 0, 255);
-    private Color violet = sysColor(238, 130, 238);
-    private Color indigo = sysColor(75, 0, 130);
     private Color black = sysColor(0, 0, 0);
-    Color rainbowColor;
+    Color flowerColor = sysColor((int)(Math.random() * 256), 0, 0);
     int currVal = 0; /* 0 through 7*/
 
 
-    // The number of rows we've colored in one direction 
     private int doneRad = -1;
 
     public ET_FlowerGrow(LightMaster master, int startTime, ArrayList<ElementController> elementList, double duration) {
@@ -95,34 +86,24 @@ public class ET_FlowerGrow extends ElementAnimation {
             // So if we haven't already done this
             if (newDoneRads < radOn)
             {
-            	switch(currVal) {
-            	case 0: rainbowColor = red;
-            	case 1: rainbowColor = orange;
-            	case 2: rainbowColor = yellow;
-            	case 3: rainbowColor = green;
-            	case 4: rainbowColor = blue;
-            	case 5: rainbowColor = violet;
-            	case 6: rainbowColor = indigo;
-            	}
-            	
-                // The for every row we haven't done
+                // The for radius we haven't done (?)
                 for (int rad = doneRad + 1; rad <= radOn && rad < 7; rad++) 
                 {
                 	for(int i = 0; i<16; i++)
                 	{
-            		  panel.setColor(i, 8-rad, rainbowColor);
+            		  panel.setColor(i, 8-rad, flowerColor);
                 	}
                 	for(int i = 0; i<16; i++)
                 	{
-            		  panel.setColor(i, 8+rad, rainbowColor);
+            		  panel.setColor(i, 8+rad, flowerColor);
                 	}
                 	for(int i = 0; i<16; i++)
                 	{
-            		  panel.setColor(8-rad, i, rainbowColor);
+            		  panel.setColor(8-rad, i, flowerColor);
                 	}
                 	for(int i = 0; i<16; i++)
                 	{
-            		  panel.setColor(8+rad, i, rainbowColor);
+            		  panel.setColor(8+rad, i, flowerColor);
                 	}
                 }
             }           
