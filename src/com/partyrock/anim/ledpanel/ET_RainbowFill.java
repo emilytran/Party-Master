@@ -28,7 +28,7 @@ public class ET_RainbowFill extends ElementAnimation {
     private Color yellow = sysColor(255, 255, 0);
     private Color green = sysColor(0, 128, 0);
     private Color blue = sysColor(0, 0, 255);
-    private Color violet = sysColor(238, 130, 238);
+    private Color violet = sysColor(160, 32, 240);
     private Color indigo = sysColor(75, 0, 130);
     private Color black = sysColor(0, 0, 0);
     Color rainbowColor;
@@ -90,42 +90,50 @@ public class ET_RainbowFill extends ElementAnimation {
             LEDPanelController panel = (LEDPanelController) controller;
 
             // How many rows should be on based on our percentage
-            int radOn = (int)(percentage * 7);
-
+            int radOn = (int)(percentage * 8);
+            currVal = doneRad+1;
             // So if we haven't already done this
             if (newDoneRads < radOn)
             {
             	switch(currVal) {
-            	case 0: rainbowColor = red;
-            	case 1: rainbowColor = orange;
-            	case 2: rainbowColor = yellow;
-            	case 3: rainbowColor = green;
-            	case 4: rainbowColor = blue;
-            	case 5: rainbowColor = violet;
-            	case 6: rainbowColor = indigo;
+            	case 1: rainbowColor = red;
+            		break;
+            	case 2: rainbowColor = orange;
+            		break;
+            	case 3: rainbowColor = yellow;
+            		break;
+            	case 4: rainbowColor = green;
+            		break;
+            	case 5: rainbowColor = blue;
+            		break;
+            	case 6: rainbowColor = violet;
+            		break;
+            	case 7: rainbowColor = indigo;
+            		break;
             	}
             	
-            	System.out.println("radON: " + radOn);
+            	//System.out.println("radON: " + radOn);
                 // The for every row we haven't done
-                for (int rad = doneRad + 1; rad <= radOn && rad < 7; rad++) 
+                for(int rad = Math.max(0, doneRad); rad <= radOn && rad < 7; rad++) 
                 {
-                	for(int i = 0; i<8-rad; i++)
+                	int inverserad = 6-rad; 
+                	System.out.println("rad:" + rad);
+                	for(int i = 0; i<2*inverserad+2; i++)
                 	{
-            		  panel.setColor(8-rad, i, rainbowColor);
+            		  panel.setColor(7-inverserad, 7-inverserad+i, rainbowColor);
                 	}
-                	for(int i = 0; i<8-rad; i++)
+                	for(int i = 0; i<2*inverserad+2; i++)
                 	{
-            		  panel.setColor(i, 8-rad, rainbowColor);
+            		  panel.setColor(7-inverserad+i, 7-inverserad, rainbowColor);
                 	}
-                	for(int i = 0; i<8+rad; i++)
+                	for(int i = 0; i<2*inverserad+3; i++)
                 	{
-            		  panel.setColor(8-rad, i, rainbowColor);
+            		  panel.setColor(7 -inverserad + i, 9 +inverserad, rainbowColor);
                 	}
-                	for(int i = 0; i<8+rad; i++)
+                	for(int i = 0; i<2*inverserad+3; i++)
                 	{
-            		  panel.setColor(i, 8-rad, rainbowColor);
+            		  panel.setColor(9+inverserad, 7-inverserad+i, rainbowColor);
                 	}
-   
    
                 }
             }           

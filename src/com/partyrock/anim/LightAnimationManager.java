@@ -6,7 +6,9 @@ import java.util.HashSet;
 
 import com.partyrock.LightMaster;
 import com.partyrock.anim.blink.BlinkFadeAnimation;
+import com.partyrock.anim.ledpanel.ET_AlternatingWipe;
 import com.partyrock.anim.ledpanel.ET_FlowerGrow;
+import com.partyrock.anim.ledpanel.ET_Pinwheel;
 import com.partyrock.anim.ledpanel.ET_RainbowFill;
 import com.partyrock.anim.ledpanel.ET_RandomColorSwap;
 import com.partyrock.anim.ledpanel.LEDFaviconAnimation;
@@ -39,6 +41,8 @@ public class LightAnimationManager {
         animationList.add(ET_RandomColorSwap.class);
         animationList.add(ET_RainbowFill.class);
         animationList.add(ET_FlowerGrow.class);
+        animationList.add(ET_AlternatingWipe.class);
+        animationList.add(ET_Pinwheel.class);
     }
 
     /**
