@@ -6,13 +6,20 @@ import java.util.HashSet;
 
 import com.partyrock.LightMaster;
 import com.partyrock.anim.blink.BlinkFadeAnimation;
+import com.partyrock.anim.ledpanel.ET_BlinkDesign;
+import com.partyrock.anim.ledpanel.ET_Gradient;
+import com.partyrock.anim.ledpanel.ET_GridDraw;
 import com.partyrock.anim.ledpanel.ET_AlternatingWipe;
 import com.partyrock.anim.ledpanel.ET_FlowerGrow;
 import com.partyrock.anim.ledpanel.ET_Pinwheel;
+import com.partyrock.anim.ledpanel.ET_DiagonalFolding;
+import com.partyrock.anim.ledpanel.ET_PacMan;
 import com.partyrock.anim.ledpanel.ET_RainbowFill;
 import com.partyrock.anim.ledpanel.ET_RandomColorSwap;
+import com.partyrock.anim.ledpanel.ET_Burst;
+import com.partyrock.anim.ledpanel.ET_Star;
 import com.partyrock.anim.ledpanel.ET_Target;
-import com.partyrock.anim.ledpanel.ET_Waves;
+import com.partyrock.anim.ledpanel.ET_Water;
 import com.partyrock.anim.ledpanel.LEDFaviconAnimation;
 import com.partyrock.anim.ledpanel.LEDWipeAnimation;
 import com.partyrock.anim.ledpanel.RandomizeLEDAnimation;
@@ -36,17 +43,26 @@ public class LightAnimationManager {
         // Add new animations to the list below
         // They'll be automatically pulled for the preview list, execute list, etc.
 
+        animationList.add(ET_AlternatingWipe.class);
+        animationList.add(ET_BlinkDesign.class);
+        animationList.add(ET_Burst.class);
+        animationList.add(ET_DiagonalFolding.class);
+        animationList.add(ET_FlowerGrow.class);
+        animationList.add(ET_Gradient.class);
+        animationList.add(ET_GridDraw.class);
+        animationList.add(ET_Pinwheel.class);
+        animationList.add(ET_RainbowFill.class);
+        animationList.add(ET_RandomColorSwap.class);
+        animationList.add(ET_DiagonalFolding.class);
+        animationList.add(ET_PacMan.class);
+        animationList.add(ET_Star.class);
+        animationList.add(ET_Target.class);
+        animationList.add(ET_Water.class);
         animationList.add(BlinkFadeAnimation.class);
         animationList.add(RandomizeLEDAnimation.class);
         animationList.add(LEDFaviconAnimation.class);
         animationList.add(LEDWipeAnimation.class);
-        animationList.add(ET_RandomColorSwap.class);
-        animationList.add(ET_RainbowFill.class);
-        animationList.add(ET_FlowerGrow.class);
-        animationList.add(ET_AlternatingWipe.class);
-        animationList.add(ET_Pinwheel.class);
-        animationList.add(ET_Target.class);
-        animationList.add(ET_Waves.class);
+
     }
 
     /**

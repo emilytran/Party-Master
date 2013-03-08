@@ -110,6 +110,8 @@ public class ET_RainbowFill extends ElementAnimation {
             		break;
             	case 7: rainbowColor = indigo;
             		break;
+            	 default: rainbowColor = sysColor(0, 0, 0);
+            	 	break;
             	}
             	
                 // The for fill in the box border

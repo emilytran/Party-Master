@@ -23,7 +23,7 @@ import com.partyrock.element.led.LEDPanelController;
 public class ET_FlowerGrow extends ElementAnimation {
 
     private Color black = sysColor(0, 0, 0);
-    Color flowerColor = sysColor((int)(Math.random() * 200)+56, 0, 0);
+    Color flowerColor = sysColor((int)(Math.random() * 100)+150, 0, 0);
     int currVal = 0; /* 0 through 7*/
 
 
