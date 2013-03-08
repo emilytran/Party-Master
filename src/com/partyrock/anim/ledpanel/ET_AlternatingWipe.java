@@ -15,18 +15,16 @@ import com.partyrock.element.ElementType;
 import com.partyrock.element.led.LEDPanelController;
 
 /**
- * This is a basic animation that will wipe an LED panel from top to bottom with a given color but alternating LED pixels
+ * This is a basic animation that will wipe an LED panel from left to right with alternating LED pixel colors
  * 
  * @author Emily Tran
  * 
  */
 public class ET_AlternatingWipe extends ElementAnimation {
-
-    // The color to fade to
+	
     private Color color1 = getRandomColor();
     private Color color2 = getRandomColor();
 
-    // The number of rows we've faded
     private int fadedRows = -1;
 
     public ET_AlternatingWipe(LightMaster master, int startTime, ArrayList<ElementController> elementList, double duration) {
@@ -44,10 +42,10 @@ public class ET_AlternatingWipe extends ElementAnimation {
             // We only put LEDS in our getSupportedTypes(), so that's all we're going to get.
             LEDPanelController panel = (LEDPanelController) controller;
 
-            // The for every row we haven't done
+            // For every row
             for (int r = 0; r < panel.getPanelHeight(); r++) 
             {
-                // and every column in that row
+                // For every column in that row
                 for (int c = 0; c < panel.getPanelWidth(); c++) 
                 {
                     // Set the color to the initial color, black
@@ -82,24 +80,25 @@ public class ET_AlternatingWipe extends ElementAnimation {
      * @param percentage The percentage of the way through the animation we are. This is between 0 and 1
      */
     public void increment(double percentage) {
-        int newFadedRows = 0;
+        int newFadedColumns = 0;
 
         // For every element we're given
         for (ElementController controller : getElements()) {
             // We only put LEDS in our getSupportedTypes(), so that's all we're going to get.
             LEDPanelController panel = (LEDPanelController) controller;
 
-            // How many rows should be on based on our percentage?
-            int rowsOn = (int) (percentage * panel.getPanelHeight());
+            // How many rows should be on based on our percentage for this animation 
+            int columnsOn = (int) (percentage * panel.getPanelHeight());
 
-            // So if we haven't already done this
-            if (fadedRows < rowsOn) {
+            // So if we haven't already done this column 
+            if (fadedRows < columnsOn) {
 
-                // The for every row we haven't done
-            	 for (int c = fadedRows + 1; c <= rowsOn && c < panel.getPanelHeight(); c++) {
+                // Then for every column
+            	 for (int c = fadedRows + 1; c <= columnsOn && c < panel.getPanelHeight(); c++) {
+            		 	// For every row 
             		 	for (int r = 0; r < panel.getPanelWidth(); r++) {
                     	
-                        // Set the color to the color we picked when making the animation
+                        // Set the alternating colors 
 	                    	if(r%2 == 0 && c%2 == 1 || r%2 == 1 && c%2 == 0)
 	                        panel.setColor(r, c, color1);
 	                    	else if(r%2 == 1 && c%2 == 1 || r%2 == 0 && c%2 == 0)
@@ -108,10 +107,10 @@ public class ET_AlternatingWipe extends ElementAnimation {
                 }
             }
 
-            newFadedRows = rowsOn;
+            newFadedColumns = columnsOn;
         }
 
-        fadedRows = newFadedRows;
+        fadedRows = newFadedColumns;
     }
 
     /**

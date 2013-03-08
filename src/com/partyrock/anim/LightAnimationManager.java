@@ -11,6 +11,8 @@ import com.partyrock.anim.ledpanel.ET_FlowerGrow;
 import com.partyrock.anim.ledpanel.ET_Pinwheel;
 import com.partyrock.anim.ledpanel.ET_RainbowFill;
 import com.partyrock.anim.ledpanel.ET_RandomColorSwap;
+import com.partyrock.anim.ledpanel.ET_Target;
+import com.partyrock.anim.ledpanel.ET_Waves;
 import com.partyrock.anim.ledpanel.LEDFaviconAnimation;
 import com.partyrock.anim.ledpanel.LEDWipeAnimation;
 import com.partyrock.anim.ledpanel.RandomizeLEDAnimation;
@@ -43,6 +45,8 @@ public class LightAnimationManager {
         animationList.add(ET_FlowerGrow.class);
         animationList.add(ET_AlternatingWipe.class);
         animationList.add(ET_Pinwheel.class);
+        animationList.add(ET_Target.class);
+        animationList.add(ET_Waves.class);
     }
 
     /**

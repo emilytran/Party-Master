@@ -15,7 +15,7 @@ import com.partyrock.element.ElementType;
 import com.partyrock.element.led.LEDPanelController;
 
 /**
- * This is a basic animation that will create a random shade of pink or red flower grow 
+ * This is a basic animation that will create a flower in the end
  * 
  * @author Emily Tran
  * 
@@ -44,7 +44,7 @@ public class ET_FlowerGrow extends ElementAnimation {
             // We only put LEDS in our getSupportedTypes(), so that's all we're going to get.
             LEDPanelController panel = (LEDPanelController) controller;
 
-            // The for every row we haven't done
+            // For every row
             for (int r = 0; r < panel.getPanelHeight(); r++) 
             {
                 // and every column in that row
@@ -80,13 +80,11 @@ public class ET_FlowerGrow extends ElementAnimation {
             // We only put LEDS in our getSupportedTypes(), so that's all we're going to get.
             LEDPanelController panel = (LEDPanelController) controller;
 
-            // How many rows should be on based on our percentage
+            // Using a radius value of 7
             int radOn = (int)(percentage * 7);
 
-            // So if we haven't already done this
             if (newDoneRads < radOn)
             {
-                // The for radius we haven't done (?)
                 for (int rad = doneRad + 1; rad <= radOn && rad < 7; rad++) 
                 {
                 	for(int i = 0; i<16; i++)

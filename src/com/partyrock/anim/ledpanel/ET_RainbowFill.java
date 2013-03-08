@@ -15,7 +15,7 @@ import com.partyrock.element.ElementType;
 import com.partyrock.element.led.LEDPanelController;
 
 /**
- * This is a basic animation that will swap the places of two random colors 
+ * This is a basic animation that will create a rainbow fill going inward  
  * 
  * @author Emily Tran
  * 
@@ -35,7 +35,6 @@ public class ET_RainbowFill extends ElementAnimation {
     int currVal = 0; /* 0 through 7*/
 
 
-    // The number of rows we've colored in one direction 
     private int doneRad = -1;
 
     public ET_RainbowFill(LightMaster master, int startTime, ArrayList<ElementController> elementList, double duration) {
@@ -89,12 +88,13 @@ public class ET_RainbowFill extends ElementAnimation {
             // We only put LEDS in our getSupportedTypes(), so that's all we're going to get.
             LEDPanelController panel = (LEDPanelController) controller;
 
-            // How many rows should be on based on our percentage
+            // How many rows should be on based on a percentage of rainbow colors
             int radOn = (int)(percentage * 8);
             currVal = doneRad+1;
             // So if we haven't already done this
             if (newDoneRads < radOn)
             {
+            	//choose the appropriate rainbow color based on square's radius
             	switch(currVal) {
             	case 1: rainbowColor = red;
             		break;
@@ -112,12 +112,10 @@ public class ET_RainbowFill extends ElementAnimation {
             		break;
             	}
             	
-            	//System.out.println("radON: " + radOn);
-                // The for every row we haven't done
+                // The for fill in the box border
                 for(int rad = Math.max(0, doneRad); rad <= radOn && rad < 7; rad++) 
                 {
                 	int inverserad = 6-rad; 
-                	System.out.println("rad:" + rad);
                 	for(int i = 0; i<2*inverserad+2; i++)
                 	{
             		  panel.setColor(7-inverserad, 7-inverserad+i, rainbowColor);

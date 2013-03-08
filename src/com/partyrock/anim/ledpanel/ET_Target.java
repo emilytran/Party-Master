@@ -15,27 +15,22 @@ import com.partyrock.element.ElementType;
 import com.partyrock.element.led.LEDPanelController;
 
 /**
- * This is a basic animation that will alternate colors in a qudrant pinwheel 
+ * This is a basic animation that will draw a red and white target onto the LED panel in three steps
  * 
  * @author Emily Tran
  * 
  */
-public class ET_Pinwheel extends ElementAnimation {
+public class ET_Target extends ElementAnimation {
+	//Our colors
+    private Color color1 = sysColor(255, 0, 0); //red 
+    private Color color2 = sysColor(255, 255, 255); //white
+    private Color bgcolor = sysColor(0, 0, 0);;
 
-    private Color color1;
-    private Color color2;
-    private Color bgcolor;
-
-
-    public ET_Pinwheel(LightMaster master, int startTime, ArrayList<ElementController> elementList, double duration) {
+    public ET_Target(LightMaster master, int startTime, ArrayList<ElementController> elementList, double duration) {
         super(master, startTime, elementList, duration);
 
         // Tell the animation system to call our animation's step() method repeatedly so we can animate over time
         needsIncrements();
-
-        color1 = sysColor(255, 20, 147);
-        color2 = sysColor(255, 255, 255);
-        bgcolor = sysColor(0, 0, 0);
     }
 
     /**
@@ -90,26 +85,27 @@ public class ET_Pinwheel extends ElementAnimation {
             // We only put LEDS in our getSupportedTypes(), so that's all we're going to get.
             LEDPanelController panel = (LEDPanelController) controller;
 
-            // Make the percentage of the time into 8 segments
-            int num = (int) (percentage * 8);
+            // How many time segments are kept in num
+            int num = (int) (percentage * 5);
 
-            // Alternate the colors
-            if (num < 8) {
+            //Draw outermost of target at num = 1, next innermost at num = 2, and last part in num = 3
+            if (num < 5) {
+                // Then for every row we haven't done
                 for (int r = 0; r < panel.getPanelHeight(); r++) {
+                    // and every column in that row
                     for (int c = 0; c < panel.getPanelWidth(); c++) {
+                        // Set the color to the appropriate part of the target color using equation of a circle
                     	int x = r-8;
                     	int y = c-8;
-                        if(x*x + y*y <= 8*8 && y > -8)
-                        {
-                        	if(((x >= 0 && y>=0 || x < 0 && y < 0)&&num%2 == 0) || ((x < 0 && y>0 || x >= 0 && y <= 0)&&num%2 == 1)) 
+                    	int x2y2 = x*x + y*y; 
+                        if( ((x2y2 <= 8*8-1 && x2y2 > 6*6 -1 ) && num == 1) || (x2y2 <= 2*2 && num == 3))
                         		panel.setColor(Math.max(0, r-1), Math.max(0, c), color1);
-                        	else 
+                        else if((x2y2 <= 6*6 -1 && x2y2 > 2*2 -1) && num == 2)
                         		panel.setColor(Math.max(0, r-1), Math.max(0, c), color2);
-                        }
+                     
                     }
                 }
             }
-
         }
     }
 
